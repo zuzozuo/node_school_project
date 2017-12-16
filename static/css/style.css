@@ -128,8 +128,13 @@ td{
   text-align: center;
   border: 1px solid black;
   width: 9vw;
-  height: 30px;
+  height: 60px;
   padding: 5px;
+}
+
+td img{
+  width: 6vw;
+  height: 50px;
 }
 
 footer{

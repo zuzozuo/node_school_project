@@ -160,49 +160,76 @@ app.post("/logonForm", function(req, res) {
 
 /*-------PANEL ADMINA--------*/
 
+
+
 /*---dodawanie do bazy ----*/
 
-app.get("/addForm", function(req, res) {
-    var doc2 = {
-      tytul: req.query.tytul,
-      autor: req.query.autor,
-      wydawnictwo: req.query.wydawnictwo,
-      gatunek: req.query.gatunek
-    }
+app.post("/addForm", function(req, res) {
+  var doc, filename;
 
-    ksiazki.insert(doc2, function(err, newDoc) {});
-    ksiazki.find({}, function(err, docs) {
-      res.render('admin.hbs', {
-        "docsy": docs
-      })
-    });
-  })
-  /*-----usuwanie z bazy----*/
-app.get("/deleteForm", function(req, res) {
-    ksiazki.remove({
-      tytul: req.query.tytul
-    }, {}, function(err, numRemoved) {});
+  var form = new formidable.IncomingForm();
+
+  form.uploadDir = __dirname + '/static/upload/'
+  form.parse(req, function(err, fields, files) {
+    var tytul = fields.tytul
+    var autor = fields.autor
+    var wydawnictwo = fields.wydawnictwo
+    var gatunek = fields.gatunek
+
+    doc = {
+      tytul: tytul,
+      autor: autor,
+      wydawnictwo: wydawnictwo,
+      gatunek: gatunek,
+      okladka: filename
+    };
+
+    ksiazki.insert(doc, function(err, newDoc) {});
+
     ksiazki.find({}, function(err, docs) {
       res.render('admin.hbs', {
         "docsy": docs
       })
     })
   })
-  /*-------edycja danych w bazie----------*/
+
+  form.on('fileBegin', function(name, file) {
+    //console.log('Uploaded  ' + file.name);
+    file.path = __dirname + '/static/upload/' + file.name
+    filename = file.name
+  })
+});
+
+/*-----usuwanie z bazy----*/
+app.get("/deleteForm", function(req, res) {
+  ksiazki.remove({
+    tytul: req.query.tytul
+  }, {}, function(err, numRemoved) {});
+  ksiazki.find({}, function(err, docs) {
+    res.render('admin.hbs', {
+      "docsy": docs
+    })
+  })
+})
+
+/*-------edycja danych w bazie----------*/
 
 app.get("/editForm", function(req, res) {
-  var nazwa = req.query.tytul;
+  var nazwa = req.query.tytul
   var autor = req.query.autor
   var wydawnictwo = req.query.wydawnictwo
   var gatunek = req.query.gatunek
 
+
   ksiazki.find({
     tytul: nazwa
   }, function(err, docs) {
-    res.render("edit.hbs", {
+    var docs2 = {
       "docsy": docs
-    });
+    };
+    res.render("edit.hbs", docs2)
   })
+
 })
 
 

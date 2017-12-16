@@ -12,11 +12,12 @@
 
 <div class="box_form add_book">
   <h3>Dodaj nową książkę</h3>
-  <form action="/addForm" method="get" class="addBooks">
-    <input type="text" name="tytul" placeholder="tytul"/>
-    <input type="text" name="autor" placeholder="autor"/>
-    <input type="text" name="wydawnictwo" placeholder="wydawnictwo"/>
-    <input type="text" name="gatunek" placeholder="gatunek"/>
+  <form action="/addForm" method="post" class="addBooks" enctype="multipart/form-data">
+    <input type="text" name="tytul" placeholder="tytul" />
+    <input type="text" name="autor" placeholder="autor" />
+    <input type="text" name="wydawnictwo" placeholder="wydawnictwo" />
+    <input type="text" name="gatunek" placeholder="gatunek" />
+    <input type="file" name="okladka" />
     <input type="submit" name="add" value="Dodaj" />
   </form>
 </div>
@@ -42,12 +43,13 @@
       <td>{{autor}}</td>
       <td>{{wydawnictwo}}</td>
       <td>{{gatunek}}</td>
-      <td>Tu ma być zdjęcie X'DDD</td>
+      <td><img src="upload/{{okladka}}" alt="brak" /></td>
       <td><form action="\deleteForm" method="get">
         <input type="hidden" name="tytul" value="{{tytul}}"/>
         <input type="hidden" name="autor" value="{{autor}}"/>
         <input type="hidden" name="wydawnictwo" value="{{wydawnictwo}}"/>
         <input type="hidden" name="gatunek" value="{{gatunek}}"/>
+        <input type="hidden" name="okladka" value="{{okladka}}" />
         <input type="submit" value="Usuń"/>
       </form></td>
       <td><form action="\editForm" method="get">
