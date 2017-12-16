@@ -230,7 +230,7 @@ app.get("/addToBasketForm", function(req, res) {
     tytul: req.query.tytul,
     autor: req.query.autor,
     gatunek: req.query.gatunek,
-    wydawca: req.query.wydawca
+    wydawnictwo: req.query.wydawnictwo
   };
   ksiazkiWypozyczone.insert(item, function(err, newItem) {});
   res.redirect('/')
@@ -244,6 +244,18 @@ app.get("/goToBasketForm", function(req, res) {
       })
     })
     //res.render("basket.hbs")
+})
+
+/*---usuwanie pozycji z zamówienia------*/
+app.get("/deleteFromBasket", function(req, res) {
+  ksiazkiWypozyczone.remove({
+    tytul: req.query.tytul
+  }, {}, function(err, numRemoved) {});
+  ksiazkiWypozyczone.find({}, function(err, items) {
+    res.render('basket.hbs', {
+      "itemsy": items
+    })
+  })
 })
 
 
