@@ -1,0 +1,27 @@
+<header>
+  <h1>Księgarnia Zuz</h1>
+  <img src="gfx/main/logo.png" alt="logo" />
+  <h2>Twój koszyk</h2>
+</header>
+
+<table>
+    <tr>
+      <td>Index</td>
+      <td>Tytul</td>
+      <td>Autor</td>
+      <td>Wydawnictwo</td>
+      <td>Gatunek</td>
+      <td>Okładka</td>
+    </tr>
+
+    {{#each docsy}}
+    <tr>
+      <td>{{@index}}</td>
+      <td>{{tytul}}</td>
+      <td>{{autor}}</td>
+      <td>{{wydawnictwo}}</td>
+      <td>{{gatunek}}</td>
+      <td>TU MA BYC ZDJĘCIE XDDD</td>
+    </tr>
+    {{/each}}
+</table>

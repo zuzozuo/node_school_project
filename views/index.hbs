@@ -1,0 +1,92 @@
+<header>
+  <h1>Księgarnia Zuz</h1>
+  <img src="gfx/main/logo.png" alt="logo" />
+</header>
+
+<div class="right">
+
+  <div class="basket_box">
+    <img src="gfx/main/basket.png" alt="basket" />
+  <form action="\goToBasketForm"  method="get">
+    <input type="submit" name="koszyk" value="Przejdź do koszyka" />
+  </form>
+  </div>
+
+<div class="box_form">
+  <h3> Znajdź książkę</h3>
+  <form action="/searchForm" method="get">
+    <input type="text" name="szukajTytul" placeholder="Wyszukaj tytułu"/>
+    <input type="submit"  name="submit" value="szukaj"/>
+  </form>
+
+  <form action="/searchForm2" method="get">
+    <input type="text" name="szukajAutora" placeholder="Wyszukaj autora"/>
+    <input type="submit"  name="submit" value="szukaj"/>
+  </form>
+
+  <form action="/searchForm3" method="get">
+    <input type="text" name="szukajGatunku" placeholder="Wyszukaj gatunku"/>
+    <input type="submit"  name="submit" value="szukaj"/>
+  </form>
+
+  <form action="/searchForm4" method="get">
+     <input type="text" name="szukajWydawnictwa" placeholder="Wyszukaj wydawnictwa"/>
+    <input type="submit"  name="submit" value="szukaj"/>
+  </form>
+</div>
+<div class="sort_box">
+  <h3>Sortowanie</h3>
+    <form action="/sortForm" method="get" class="sort">
+      <select name="sortuj">
+            <option>sortuj</option>
+            <option value="1">A-Z</option>
+            <option value="-1">Z-A</option>
+      </select>
+      <input type="submit" value="sortuj"/>
+    </form>
+</div>
+</div>
+
+
+<!---logowanie na panel admina--->
+<div class="login">
+  <p> Logowanie do panelu admina: </p>
+
+  <form action="/logonForm" method="post">
+    <input type="text" name="login" placeholder="login" />
+    <input type="password" name="password"  placeholder="hasło"/>
+    <input type="submit" name="submit" value="zaloguj"/>
+  </form>
+</div>
+
+<div class="left">
+<table>
+    <tr>
+      <td>Index</td>
+      <td>Tytul</td>
+      <td>Autor</td>
+      <td>Wydawnictwo</td>
+      <td>Gatunek</td>
+      <td>Okładka</td>
+      <td>Dodaj</td>
+    </tr>
+
+    {{#each docsy}}
+    <tr>
+      <td>{{@index}}</td>
+      <td>{{tytul}}</td>
+      <td>{{autor}}</td>
+      <td>{{wydawnictwo}}</td>
+      <td>{{gatunek}}</td>
+      <td>TUTAJ MA BYC  OBRAZEK X'DD</td>
+      <td><form action="\addToBasketForm" method="get">
+        <input type="hidden" name="tytul" value="{{tytul}}"/>
+        <input type="hidden" name="autor" value="{{autor}}"/>
+        <input type="hidden" name="wydawnictwo" value="{{wydawnictwo}}"/>
+        <input type="hidden" name="gatunek" value="{{gatunek}}"/>
+        <input type="submit" value="Dodaj"/>
+      </form></td>
+  </tr>
+  {{/each}}
+</table>
+</div>

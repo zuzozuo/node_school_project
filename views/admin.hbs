@@ -1,0 +1,62 @@
+<header>
+  <h1>Księgarnia Zuz</h1>
+  <img src="gfx/main/logo.png" alt="logo" />
+  <div class="adm_title">
+    <h2>Panel admina</h2>
+    <form action="\logoutForm" method="get">
+      <input type="submit" name="logout" value="Wyloguj"/>
+    </form>
+  </div>
+</header>
+<div class="right">
+
+<div class="box_form">
+  <form action="/addForm" method="get" class="addBooks">
+    <input type="text" name="tytul" placeholder="tytul"/>
+    <input type="text" name="autor" placeholder="autor"/>
+    <input type="text" name="wydawnictwo" placeholder="wydawnictwo"/>
+    <input type="text" name="gatunek" placeholder="gatunek"/>
+    <input type="submit" name="add" value="Dodaj" />
+  </form>
+</div>
+</div>
+
+<div class="left">
+<table>
+  <tr>
+    <td>Index</td>
+    <td>Tytuł</td>
+    <td>Autor</td>
+    <td>Wydawnictwo</td>
+    <td>Gatunek</td>
+    <td>Okładka</td>
+    <td>Usuń</td>
+    <td>Edytuj</td>
+  </tr>
+
+  {{#each docsy}}
+    <tr>
+      <td>{{@index}}</td>
+      <td>{{tytul}}</td>
+      <td>{{autor}}</td>
+      <td>{{wydawnictwo}}</td>
+      <td>{{gatunek}}</td>
+      <td>Tu ma być zdjęcie X'DDD</td>
+      <td><form action="\deleteForm" method="get">
+        <input type="hidden" name="tytul" value="{{tytul}}"/>
+        <input type="hidden" name="autor" value="{{autor}}"/>
+        <input type="hidden" name="wydawnictwo" value="{{wydawnictwo}}"/>
+        <input type="hidden" name="gatunek" value="{{gatunek}}"/>
+        <input type="submit" value="Usuń"/>
+      </form></td>
+      <td><form action="\editForm" method="get">
+        <input type="hidden" name="tytul" value="{{tytul}}"/>
+        <input type="hidden" name="autor" value="{{autor}}"/>
+        <input type="hidden" name="wydawnictwo" value="{{wydawnictwo}}"/>
+        <input type="hidden" name="gatunek" value="{{gatunek}}"/>
+        <input type="submit" value="Edytuj"/>
+      </form></td>
+    </tr>
+  {{/each}}
+</table>
+</div>
