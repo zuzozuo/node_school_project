@@ -1,16 +1,17 @@
 <header>
   <h1>Księgarnia Zuz</h1>
   <img src="gfx/main/logo.png" alt="logo" />
+
+    <div class="basket_box">
+    <img src="gfx/main/basket.png" alt="basket"/>
+    <form action="\goToBasketForm"  method="get">
+      <input type="submit" name="koszyk" value="Koszyk" />
+    </form>
+    </div>
+
 </header>
 
-<div class="right">
-
-  <div class="basket_box">
-    <img src="gfx/main/basket.png" alt="basket" />
-  <form action="\goToBasketForm"  method="get">
-    <input type="submit" name="koszyk" value="Przejdź do koszyka" />
-  </form>
-  </div>
+<div class="left">
 
 <div class="box_form">
   <h3> Znajdź książkę</h3>
@@ -59,7 +60,7 @@
   </form>
 </div>
 
-<div class="left">
+<div class="right">
 <table>
     <tr>
       <td>Index</td>

@@ -2,8 +2,12 @@
   <h1>Księgarnia Zuz</h1>
   <img src="gfx/main/logo.png" alt="logo" />
   <h2>Twój koszyk</h2>
+  <form action="/backForm" method="get">
+    <input type="submit" name="powrot" value="Powrót" />
+  </form>
 </header>
 
+<div class="right">
 <table>
     <tr>
       <td>Index</td>
@@ -12,9 +16,10 @@
       <td>Wydawnictwo</td>
       <td>Gatunek</td>
       <td>Okładka</td>
+      <td>Usuń</td>
     </tr>
 
-    {{#each docsy}}
+    {{#each itemsy}}
     <tr>
       <td>{{@index}}</td>
       <td>{{tytul}}</td>
@@ -22,6 +27,17 @@
       <td>{{wydawnictwo}}</td>
       <td>{{gatunek}}</td>
       <td>TU MA BYC ZDJĘCIE XDDD</td>
+      <td><form action="\deleteFromBasket" method="get">
+          <input type="hidden" name="tytul" value="{{tytul}}"/>
+          <input type="hidden" name="autor" value="{{autor}}"/>
+          <input type="hidden" name="wydawnictwo" value="{{wydawnictwo}}"/>
+          <input type="hidden" name="gatunek" value="{{gatunek}}"/>
+          <input type="submit" value="Usuń"/>
+        </form></td>
     </tr>
     {{/each}}
 </table>
+</div>
+<div class="left">
+
+</div>

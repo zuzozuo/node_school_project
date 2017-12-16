@@ -9,7 +9,9 @@ body{
 /*------HEADER Z LOGOWANIEM-------*/
 header{
   height: 80px;
-  background-color: rgb(210,180,140)
+  background-color: rgb(210,180,140);
+  border-bottom: 5px solid rgb(82,71,55);
+  padding: 5px;
 }
 
 header img{
@@ -42,6 +44,11 @@ header h1{
   top: 0;
   text-align: center;
 }
+
+/*.login p{
+  font-size: 20px;
+}*/
+
 header h2{
   display: block;
   position: absolute;
@@ -55,18 +62,17 @@ main{
   min-height: 97vh;
 }
 
-.left{
+.right{
   width: 75vw;
-  float: left;
+  float: right;
   min-height: 96vh;
 }
 
-.right{
+.left{
   width: 23.8vw;
   min-height: 490px;
   background-color: rgb(210,180,140);
-  float: right;
-  margin-top: 2vh;
+  float: left;
   padding: 50px, 0, 50px, 0;
 }
 
@@ -86,10 +92,11 @@ main{
 .box_form input{
   margin-top: 3px;
   margin-bottom: 3px;
+  font-size: 14px;
 }
 
 .sort_box{
-  width: 250px;
+  width: 230px;
   height: 80px;
   border: 1px solid black;
   margin: 0 auto;
@@ -101,19 +108,18 @@ main{
   text-align: center;
 }
 
-.sort input[type=submit]{
-  width: 100px;
+.sort input[type=submit], .sort select[name=sortuj]{
+  width: 90px;
   height: 40px;
+  font-size: 14px;
+  margin: 0 10px 0 10px;
 }
 
-.sort select[name=sortuj]{
-  width: 100px;
-  height: 40px;
-}
+
 
 /*--------------TABELA----------------*/
 
-.left table{
+.right table{
   margin: 0 auto;
   margin-top: 2vh;
   margin-bottom: 2vh;
@@ -153,26 +159,49 @@ footer{
   position: absolute;
   top: 0;
   right: 0;
-
 }
 
-/*----------koszyq-----------*/
+/*----------koszyk-----------*/
 .basket_box{
-  width: 115px;
-  height: 120px;
-  border: 1px solid black;
-  position: relative;
-  margin: 0 auto;
-  margin-top: 20px;
+  width: 50px;
+  height: 50px;
+  /*border: 1px solid black;*/
+  position: absolute;
+  padding: 5px;
+  top: 0;
+  right: 390px;
+
 }
 .basket_box img{
-  width: 100px;
-  height: 90px;
-  margin: 0 auto;
+  width: 50px;
+  height: 40px;
+  position: absolute;
+  left: 0;
+  margin-left:5px;
+  margin-right: 5px;
 }
 
 input[name="koszyk"]{
+  font-size: 10px;
   position: absolute;
-  right: 0;
-  bottom:0;
+  bottom: 0;
+  left: 12px;
+}
+
+/*------dodawanie do bazy-------*/
+.add_book{
+  height: 200px;
+  width: 250px;
+}
+
+.add_book input{
+  font-size: 17px;
+}
+
+.add_book input[name="add"]{
+  position: absolute;
+  bottom: 0;
+  font-size: 16px;
+  left: 25%;
+  width: 100px;
 }
