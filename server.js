@@ -8,6 +8,7 @@ var formidable = require('formidable');
 var hbs = require('express-handlebars');
 var Datastore = require('nedb')
 var passwordHash = require('password-hash');
+var doc, edytujKsiazke, bookCover;
 app.set('views', path.join(__dirname, 'views')); // ustalamy katalog views
 app.engine('hbs', hbs({
   defaultLayout: 'main.hbs'
@@ -18,7 +19,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-/*----------KONIEC PODPINANIA TEGO SZOJSU-----------*/
+/*--------CODE BEGINS HERE----------*/
 
 /*-----baza danych i te sprawy----*/
 var ksiazki = new Datastore({
@@ -160,8 +161,6 @@ app.post("/logonForm", function(req, res) {
 
 /*-------PANEL ADMINA--------*/
 
-
-
 /*---dodawanie do bazy ----*/
 
 app.post("/addForm", function(req, res) {
@@ -217,23 +216,41 @@ app.get("/deleteForm", function(req, res) {
 /*-------edycja danych w bazie----------*/
 
 app.get("/editForm", function(req, res) {
-  var nazwa = req.query.tytul
-  var autor = req.query.autor
-  var wydawnictwo = req.query.wydawnictwo
-  var gatunek = req.query.gatunek
-
-
-  ksiazki.find({
-    tytul: nazwa
-  }, function(err, docs) {
-    var docs2 = {
-      "docsy": docs
-    };
-    res.render("edit.hbs", docs2)
+  edytujKsiazke = req.query.edycja
+  ksiazki.findOne({
+    _id: req.query.edycja
+  }, function(err, doc) {
+    res.render('edit.hbs', doc)
   })
-
 })
 
+app.post('/editForm2', function(req, res) {
+  var form = new formidable.IncomingForm();
+  form.uploadDir = __dirname + '/static/upload/'
+  form.parse(req, function(err, fields, files) {
+    ksiazki.findOne({
+      _id: edytujKsiazke
+    }, function(err, doc) {
+      ksiazki.update(doc, {
+        tytul: fields.tytul,
+        autor: fields.autor,
+        wydawnictwo: fields.wydawnictwo,
+        gatunek: fields.gatunek,
+        okladka: bookCover
+      }, {}, function(err, numReplaced) {
+        ksiazki.find({}, function(err, docs) {
+          res.render('admin.hbs', {
+            "docsy": docs
+          })
+        })
+      })
+    })
+  })
+  form.on('fileBegin', function(name, file) {
+    file.path = __dirname + '/static/upload' + file.name
+    bookCover = file.name
+  })
+})
 
 /*---- wyloguj sie ------*/
 app.get("/logoutForm", function(req, res) {
@@ -287,6 +304,15 @@ app.get("/deleteFromBasket", function(req, res) {
     })
   })
 })
+
+/*----Usuwanie całej zawartosci koszyka-------*/
+app.get("/deleteAllItems", function(req, res) {
+  ksiazkiWypozyczone.remove({}, {
+    multi: true
+  }, function(err, numRemoved) {});
+  res.redirect('/goToBasketForm');
+})
+
 
 app.listen(PORT, function() {
   console.log("start serwera na porcie " + PORT)
