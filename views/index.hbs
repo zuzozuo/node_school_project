@@ -1,5 +1,5 @@
 <header>
-  <h1>Księgarnia Zuz</h1>
+  <h1>Biblioteka Zuz</h1>
   <img src="gfx/main/logo.png" alt="logo" />
 
     <div class="basket_box">
@@ -46,7 +46,17 @@
       <input type="submit" value="sortuj"/>
     </form>
 </div>
+
+<div class="change_display">
+  <h3> Zmień widok</h3>
+    <select name="widok">
+      <option name="tabela" value="tabela">tabela</option>
+      <option name="lista" value="lista">lista</option>
+      <option name="kafelki" value="kafelki">kafelki</option>
+    </select>
+    <button type="submit" id="display_btn">Zmień</button>
 </div>
+</div><!--koniec lefta-->
 
 
 <!---logowanie na panel admina--->
@@ -61,9 +71,9 @@
 </div>
 
 <div class="right">
-<table>
+<table class="table_display">
     <tr>
-      <td>Index</td>
+      <td class="index">Index</td>
       <td>Tytul</td>
       <td>Autor</td>
       <td>Wydawnictwo</td>
@@ -74,12 +84,12 @@
 
     {{#each docsy}}
     <tr>
-      <td>{{@index}}</td>
+      <td class="index">{{@index}}</td>
       <td>{{tytul}}</td>
       <td>{{autor}}</td>
       <td>{{wydawnictwo}}</td>
       <td>{{gatunek}}</td>
-      <td><img src="upload/{{okladka}}" alt="brak"/></td>
+      <td class="cover"><img src="upload/{{okladka}}" alt="brak" title="{{informacje}}" class="table_info"/>
       <td><form action="\addToBasketForm" method="get">
         <input type="hidden" name="tytul" value="{{tytul}}"/>
         <input type="hidden" name="autor" value="{{autor}}"/>
@@ -91,4 +101,54 @@
   </tr>
   {{/each}}
 </table>
+<!--NOWA STRUKTURA------->
+
+<!--LISTA-------------->
+<div class="list_display">
+{{#each docsy}}
+  <div class="list_box">
+    <img src="upload/{{okladka}}" alt="brak"/>
+    <div class="list_left_info">
+      <h3>{{tytul}}</h3>
+      <p><span>Autor: </span>{{autor}}</p>
+      <p><span>Wydawnictwo: </span>{{wydawnictwo}}</p>
+      <p><span>Gatunek: </span>{{gatunek}}</p>
+      <p class="right_info"><span>Informacje: </span>{{informacje}}</p>
+      <form action="\addToBasketForm" method="get">
+        <input type="hidden" name="tytul" value="{{tytul}}"/>
+        <input type="hidden" name="autor" value="{{autor}}"/>
+        <input type="hidden" name="wydawnictwo" value="{{wydawnictwo}}"/>
+        <input type="hidden" name="gatunek" value="{{gatunek}}"/>
+        <input type="hidden" name="okladka" value="{{okladka}}" />
+        <input type="submit" value="Dodaj"/>
+      </form>
+    </div>
+  </div>
+{{/each}}
+</div>
+
+<!--KAFELKI------------>
+<div class="tiles_display">
+{{#each docsy}}
+  <div class="tiles_box">
+    <img src="upload/{{okladka}}" alt="brak" title="{{informacje}}" class="table_info"/>
+    <h3>{{tytul}}</h3>
+    <h4>{{autor}}</h4>
+      <div class="tiles_info">
+            <p><span>Wydawnictwo: </span>{{wydawnictwo}}</p>
+            <p><span>Gatunek: </span>{{gatunek}}</p>
+            <p><span>Informacje: </span>{{informacje}}</p>
+      </div>
+      <form action="\addToBasketForm" method="get">
+        <input type="hidden" name="tytul" value="{{tytul}}"/>
+        <input type="hidden" name="autor" value="{{autor}}"/>
+        <input type="hidden" name="wydawnictwo" value="{{wydawnictwo}}"/>
+        <input type="hidden" name="gatunek" value="{{gatunek}}"/>
+        <input type="hidden" name="okladka" value="{{okladka}}" />
+        <input type="submit" value="Dodaj"/>
+      </form>
+    </div>
+{{/each}}
+  </div>
+
 </div>

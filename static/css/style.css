@@ -1,6 +1,7 @@
 *{
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
 }
 
 body{
@@ -12,6 +13,7 @@ header{
   background-color: rgb(210,180,140);
   border-bottom: 5px solid rgb(82,71,55);
   padding: 5px;
+  width: 100vw;
 }
 
 header img{
@@ -45,6 +47,11 @@ header h1{
   text-align: center;
 }
 
+.login input[type="text"], input[type="password"]{
+  width: 130px;
+  font-size: 15px;
+}
+
 /*.login p{
   font-size: 20px;
 }*/
@@ -74,6 +81,7 @@ main{
   background-color: rgb(210,180,140);
   float: left;
   padding: 50px, 0, 50px, 0;
+  position: fixed;
 }
 
 /*------------WYSZUKIWANIE------------*/
@@ -92,7 +100,7 @@ main{
 .box_form input{
   margin-top: 3px;
   margin-bottom: 3px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .sort_box{
@@ -116,6 +124,29 @@ main{
 }
 
 
+/*-------ZMIANA WYGLĄDU------*/
+
+.change_display{
+  width: 230px;
+  height: 80px;
+  border: 1px solid black;
+  margin: 0 auto;
+  margin-top: 20px;
+  position: relative;
+}
+
+.change_display button, .change_display select[name=widok]{
+  width: 90px;
+  height: 40px;
+  font-size: 14px;
+  margin: 0 10px 0 10px;
+}
+
+.change_display h3{
+  text-align: center;
+}
+
+
 
 /*--------------TABELA----------------*/
 
@@ -127,14 +158,23 @@ main{
 td{
   text-align: center;
   border: 1px solid black;
-  width: 9vw;
-  height: 60px;
+  width: 10%;
+  height: 15%;
   padding: 5px;
+  word-wrap: wrap;
 }
 
 td img{
-  width: 6vw;
-  height: 50px;
+  width: 70%;
+  height: 80%;
+}
+
+.index{
+  width: 5%;
+}
+
+.cover{
+  font-style: oblique;
 }
 
 footer{
@@ -144,7 +184,7 @@ footer{
 }
 /*--------Przyciski fajne--------*/
 
-.adm_title{
+.adm_title, .basket_title{
   width: 200px;
   height: 75px;
   border: 1px solid black;
@@ -160,10 +200,11 @@ footer{
   bottom: 0;
   position: absolute;
 }
-.adm_title h2{
+.adm_title h2, .basket_title h2{
   position: absolute;
   top: 0;
   right: 0;
+  margin-right: 10px;
 }
 
 /*----------koszyk-----------*/
@@ -193,9 +234,20 @@ input[name="koszyk"]{
   left: 12px;
 }
 
+input[type="file"]{
+  font-size: 10px;
+}
+
+#goBack_btn{
+  width: 100px;
+  height: 40px;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
 /*------dodawanie do bazy-------*/
 .add_book{
-  height: 200px;
+  height: 320px;
   width: 250px;
 }
 
@@ -210,3 +262,99 @@ input[name="koszyk"]{
   left: 25%;
   width: 100px;
 }
+/*--------tooltip --------------*/
+
+.tooltip{
+  display:none;
+	position:absolute;
+	border:1px solid #333;
+	background-color:#161616;
+	border-radius:5px;
+  font-size: 10px;
+	padding: 11px;
+	color:#fff;
+}
+
+/*---------------WIDOK TABELI--------------------*/
+.table_display{
+  display: inline;
+}
+
+/*-------------WIDOK LISTY-----------------*/
+
+.list_display{
+  display: none;
+}
+
+.list_box{
+  width: 95%;
+  margin: 0 auto;
+  background-color: rgba(255,255,255,0.4);
+  border-radius: 20px;
+  min-height: 17vh;
+  margin-top: 20px;
+  padding: 20px;
+  position: relative;
+}
+
+.list_box p{
+  font-style: oblique;
+}
+
+.list_box p span{
+  font-weight: bold;
+}
+
+.list_box img{
+  height: 70%;
+  width: 25%;
+  border: 1px solid black;
+}
+
+.list_left_info{
+  width: 65%;
+  min-height: 20vh;
+  float: right;
+  display: block;
+}
+
+.right_info{
+
+}
+
+/*---------WIDOK KAFELKI------------*/
+.tiles_display{
+  display: none; /*POTEM ZMIEŃ NA NONE!*/
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.tiles_box{
+  width: 35%;
+  min-height: 50vh;
+  background-color: rgba(255,255,255, 0.5);
+  border-radius: 15px;
+  margin: 50px;
+  text-align: center;
+  padding: 10px;
+}
+
+.tiles_box img{
+  width: 60%;
+  height: 80%;
+  margin: 0 auto;
+  display: block;
+}
+
+.tiles_info{
+  display: none;
+}
+
+./*tiles_info{
+  display: block;
+  width: 24.8vw;
+  min-height: 49.8vh;
+  background-color: rgba(0,0,0, 0.6)
+  color: white;
+  text-decoration: none;
+}*/

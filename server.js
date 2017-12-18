@@ -111,9 +111,9 @@ app.get("/sortForm", function(req, res) {
       res.render('index.hbs', {
         "docsy": docs
       });
-      console.log(JSON.stringify({
+      /*console.log(JSON.stringify({
         "docsy": docs
-      }, null, 5))
+      }, null, 5))*/
     });
 
   } else if (req.query.sortuj == "1") {
@@ -123,9 +123,9 @@ app.get("/sortForm", function(req, res) {
       res.render('index.hbs', {
         "docsy": docs
       });
-      console.log(JSON.stringify({
+      /*console.log(JSON.stringify({
         "docsy": docs
-      }, null, 5))
+      }, null, 5))*/
     });
   }
 });
@@ -175,13 +175,15 @@ app.post("/addForm", function(req, res) {
     var autor = fields.autor
     var wydawnictwo = fields.wydawnictwo
     var gatunek = fields.gatunek
+    var informacje = fields.informacje
 
     doc = {
       tytul: tytul,
       autor: autor,
       wydawnictwo: wydawnictwo,
       gatunek: gatunek,
-      okladka: filename
+      okladka: filename,
+      informacje: informacje
     };
 
     ksiazki.insert(doc, function(err, newDoc) {});
@@ -257,7 +259,8 @@ app.get("/addToBasketForm", function(req, res) {
     tytul: req.query.tytul,
     autor: req.query.autor,
     gatunek: req.query.gatunek,
-    wydawnictwo: req.query.wydawnictwo
+    wydawnictwo: req.query.wydawnictwo,
+    okladka: req.query.okladka
   };
   ksiazkiWypozyczone.insert(item, function(err, newItem) {});
   res.redirect('/')
@@ -284,8 +287,6 @@ app.get("/deleteFromBasket", function(req, res) {
     })
   })
 })
-
-
 
 app.listen(PORT, function() {
   console.log("start serwera na porcie " + PORT)
