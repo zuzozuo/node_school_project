@@ -4,21 +4,28 @@
   <div class="basket_title">
     <h2>Twój koszyk</h2>
   <form action="/backForm" method="get">
-    <input type="submit" name="powrot" value="Powrót" id="goBack_btn" />
+    <input type="submit" name="powrot" value="Powrót" class="goBack_btn" />
+  </form>
+  <form method="get" action="/deleteAllItems" id="deleteAllForm">
+    <input type="submit" value="Opróżnij koszyk" name="usunZawartosc" />
   </form>
   </div>
 </header>
 
 <div class="left">
-  <form method="get" action="/deleteAllItems">
-    <input type="submit" value="Opróżnij koszyk" name="usunZawartosc" />
-  </form>
+  <h3 class="orderedTitles_title">Zamówione tytuły: </h3>
+  <ul class="orderedTitles">
+    {{#each itemsy}}
+      <li>"{{tytul}}"</li>
+    {{/each}}
+  </ul>
+
 </div>
 
 <div class="right">
 <table>
-    <tr>
-      <td class="index">Index</td>
+    <tr class="table_headers">
+      <td class="index">Nr</td>
       <td>Tytul</td>
       <td>Autor</td>
       <td>Wydawnictwo</td>

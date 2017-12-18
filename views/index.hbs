@@ -72,8 +72,8 @@
 
 <div class="right">
 <table class="table_display">
-    <tr>
-      <td class="index">Index</td>
+    <tr class="table_headers">
+      <td class="index">Nr</td>
       <td>Tytul</td>
       <td>Autor</td>
       <td>Wydawnictwo</td>
@@ -120,7 +120,7 @@
         <input type="hidden" name="wydawnictwo" value="{{wydawnictwo}}"/>
         <input type="hidden" name="gatunek" value="{{gatunek}}"/>
         <input type="hidden" name="okladka" value="{{okladka}}" />
-        <input type="submit" value="Dodaj"/>
+        <input type="submit" value="Dodaj" name="dodajLista"/>
       </form>
     </div>
   </div>
@@ -131,7 +131,7 @@
 <div class="tiles_display">
 {{#each docsy}}
   <div class="tiles_box">
-    <img src="upload/{{okladka}}" alt="brak" title="{{informacje}}" class="table_info"/>
+    <img src="upload/{{okladka}}" alt="brak" title="{{informacje}}" class="tiles_info"/>
     <h3>{{tytul}}</h3>
     <h4>{{autor}}</h4>
       <div class="tiles_info">

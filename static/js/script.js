@@ -24,6 +24,29 @@ $(document).ready(function() {
       })
   });
 
+  /*-----TOOLTIP DLA KAFELKÓW-------*/
+
+  $('.tiles_info').hover(function() {
+    var title = $(this).attr('title');
+    $(this).data('tipText', title).removeAttr('title');
+    $('<p class="tooltip_tiles"></p>')
+      .text(title)
+      .appendTo('body')
+      .fadeIn('slow');
+  }, function() {
+
+    $(this).attr('title', $(this).data('tipText'));
+    $('.tooltip_tiles').remove();
+  }).mousemove(function(e) {
+    var mousex = e.pageX + 20;
+    var mousey = e.pageY + 10;
+    $('.tooltip_tiles')
+      .css({
+        top: mousey,
+        left: mousex
+      })
+  });
+
 
   /*-------SELECT----------*/
 

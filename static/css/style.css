@@ -152,16 +152,25 @@ main{
 
 .right table{
   margin: 0 auto;
-  margin-top: 2vh;
-  margin-bottom: 2vh;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
+
+.table_headers{
+  font-weight: bold;
+  font-size: 80%;
+  background-color: rgba(255,255,255, 0.1);
+}
+
 td{
   text-align: center;
-  border: 1px solid black;
   width: 10%;
   height: 15%;
   padding: 5px;
   word-wrap: wrap;
+  border-radius: 10px;
+  background-color:rgba(255,255,255, 0.3);
+  border: 1px solid black;
 }
 
 td img{
@@ -171,6 +180,8 @@ td img{
 
 .index{
   width: 5%;
+  font-size: 20px;
+  padding: 0;
 }
 
 .cover{
@@ -180,12 +191,13 @@ td img{
 footer{
   height: 25px;
   background-color: rgb(210,180,140);
+  padding: 10px;
   clear: both;
 }
 /*--------Przyciski fajne--------*/
 
-.adm_title, .basket_title{
-  width: 200px;
+.adm_title, .basket_title, .edit_title{
+  width: 230px;
   height: 75px;
   border: 1px solid black;
   position: absolute;
@@ -200,7 +212,7 @@ footer{
   bottom: 0;
   position: absolute;
 }
-.adm_title h2, .basket_title h2{
+.adm_title h2, .basket_title h2, .edit_title h2{
   position: absolute;
   top: 0;
   right: 0;
@@ -238,13 +250,38 @@ input[type="file"]{
   font-size: 10px;
 }
 
-#goBack_btn{
+.goBack_btn{
   width: 100px;
   height: 40px;
   right: 0;
   bottom: 0;
   position: absolute;
 }
+
+
+input[name="usunZawartosc"]{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 120px;
+  height: 40px;
+}
+
+.orderedTitles_title{
+  text-align: center;
+}
+
+.orderedTitles li{
+  text-align: center;
+  display: block;
+  border: 1px solid black;
+  margin: 10px;
+  background-color: rgba(255,255,255, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
 /*------dodawanie do bazy-------*/
 .add_book{
   height: 320px;
@@ -274,6 +311,22 @@ input[type="file"]{
 	padding: 11px;
 	color:#fff;
 }
+
+
+/*---- tooltip dla kafelków-------*/
+
+ .tooltip_tiles{
+  display:none;
+	position:absolute;
+  max-width: 20%;
+	border:1px solid #333;
+	background-color:#161616;
+	border-radius:5px;
+  font-size: 14px;
+	padding: 11px;
+	color:#fff;
+}
+
 
 /*---------------WIDOK TABELI--------------------*/
 .table_display{
@@ -308,7 +361,7 @@ input[type="file"]{
 .list_box img{
   height: 70%;
   width: 25%;
-  border: 1px solid black;
+  border-radius: 10%;
 }
 
 .list_left_info{
@@ -316,6 +369,13 @@ input[type="file"]{
   min-height: 20vh;
   float: right;
   display: block;
+}
+
+.list_box input[name="dodajLista"]{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 130%;
 }
 
 .right_info{
@@ -350,7 +410,7 @@ input[type="file"]{
   display: none;
 }
 
-./*tiles_info{
+/*.tiles_info{
   display: block;
   width: 24.8vw;
   min-height: 49.8vh;
@@ -358,3 +418,42 @@ input[type="file"]{
   color: white;
   text-decoration: none;
 }*/
+
+/*----------EDYCJA----------*/
+
+.edit_box{
+  width: 50%;
+  min-height: 80vh;
+  background-color: rgba(255,255,255, 0.5);
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid black;
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.edit_box img{
+  display:block;
+  margin: 0 auto;
+  width: 40%;
+  height: 60%;
+  border-radius: 10%;
+}
+
+
+.edit_input{
+  font-size: 100%;
+  margin: 0 auto;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#submit_edition{
+  font-size: 110%;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}

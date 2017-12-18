@@ -1,17 +1,22 @@
 <header>
   <h1>Księgarnia Zuz</h1>
   <img src="gfx/main/logo.png" alt="logo" />
-  <h2>Edycja pozycji</h2>
-  <form action="/backForm" method="get">
-    <input type="submit" name="powrot" value="Powrót" />
-  </form>
+  <div class="edit_title">
+    <h2>Edycja pozycji</h2>
+    <form action="/backForm" method="get">
+      <input type="submit" name="powrot" value="Powrót" class="goBack_btn" />
+    </form>
+  </div>
 </header>
 
-<form action="editForm2" method="get">
-  <label>Tytuł: <input type="text" name="tytul" /></label>
-  <label>Autor: <input type="text" name="autor" /></label>
-  <label>Wydawnictwo: <input type="text" name="wydawnictwo" /></label>
-  <label>Gatunek: <input type="text" name="gatunek"/></label>
-  <label>Zdjęcie: <input type="image" name="okladka"/></label>
-  <input type="submit" value="Zmień" />
+<div class="edit_box">
+  <img src="upload/{{okladka}}" alt="brak" />
+<form action="/editForm2" method="post" enctype="multipart/form-data">
+  <input type="text" name="tytul" placeholder="tytul" class="edit_input" />
+  <input type="text" name="autor" placeholder="autor" class="edit_input"/>
+  <input type="text" name="wydawnictwo" placeholder="wydawnictwo" class="edit_input"/>
+  <input type="text" name="gatunek" placeholder="gatunek" class="edit_input"/>
+  <input type="file" name="okladka" accept="image/*" class="edit_input"/>
+  <input type="submit" value="Zmień"  id="submit_edition"/>
 </form>
+</div>

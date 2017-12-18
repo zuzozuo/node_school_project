@@ -26,8 +26,8 @@
 
 <div class="right">
 <table>
-  <tr>
-    <td class="index">Index</td>
+  <tr class="table_headers">
+    <td class="index">Nr</td>
     <td>Tytuł</td>
     <td>Autor</td>
     <td>Wydawnictwo</td>
@@ -58,7 +58,7 @@
         <input type="hidden" name="autor" value="{{autor}}"/>
         <input type="hidden" name="wydawnictwo" value="{{wydawnictwo}}"/>
         <input type="hidden" name="gatunek" value="{{gatunek}}"/>
-        <input type="submit" value="Edytuj"/>
+        <button type="submit" name="edycja" value={{_id}}>Edytuj</button>
       </form></td>
     </tr>
   {{/each}}
