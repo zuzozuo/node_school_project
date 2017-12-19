@@ -159,6 +159,7 @@ app.post("/logonForm", function(req, res) {
 });
 
 
+
 /*-------PANEL ADMINA--------*/
 
 /*---dodawanie do bazy ----*/
@@ -277,7 +278,8 @@ app.get("/addToBasketForm", function(req, res) {
     autor: req.query.autor,
     gatunek: req.query.gatunek,
     wydawnictwo: req.query.wydawnictwo,
-    okladka: req.query.okladka
+    okladka: req.query.okladka,
+    informacje: req.query.informacje
   };
   ksiazkiWypozyczone.insert(item, function(err, newItem) {});
   res.redirect('/')
@@ -311,6 +313,65 @@ app.get("/deleteAllItems", function(req, res) {
     multi: true
   }, function(err, numRemoved) {});
   res.redirect('/goToBasketForm');
+})
+
+/*---- Wyswietlanie po itemie--------*/
+
+
+
+app.get('/:id', function(req, res) {
+  var id = req.params.id
+
+  ksiazki.findOne({
+      _id: id
+    }, function(err, doc) {
+      res.render("wybranaksiazka.hbs", doc)
+    })
+    /*var item = req.params.item
+
+    if (item == id) {
+      ksiazki.find({
+        _id: id
+      }, function(err, docs) {
+        res.render('wybranaksiazka.hbs', {
+          "docsy": docs
+        })
+      })
+    } else if (item == tytul) {
+      ksiazki.find({
+        tytul: id
+      }, function(err, docs) {
+        res.render('wybranaksiazka.hbs', {
+          "docsy": docs
+        })
+      })
+    } else if (item == autor) {
+      ksiazki.find({
+        autor: id
+      }, function(err, docs) {
+        res.render('wybranaksiazka.hbs', {
+          "docsy": docs
+        })
+      })
+    } else if (item == gatunek) {
+      ksiazki.find({
+        gatunek: id
+      }, function(err, docs) {
+        res.render('wybranaksiazka.hbs', {
+          "docsy": docs
+        })
+      })
+    } else if (item == wydawnictwo) {
+      ksiazki.find({
+        wydawnictwo: id
+      }, function(err, docs) {
+        res.render('wybranaksiazka.hbs', {
+          "docsy": docs
+        })
+      })
+    } else {
+      res.send("Nie ma takiego tytulu ;(")
+    }*/
 })
 
 

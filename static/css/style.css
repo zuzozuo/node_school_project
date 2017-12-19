@@ -40,7 +40,7 @@ header h1{
   display: block;
   width: 380px;
   height: 50px;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   position: absolute;
   right: 0;
   top: 0;
@@ -76,12 +76,15 @@ main{
 }
 
 .left{
-  width: 23.8vw;
-  min-height: 490px;
+  width: 23%;
+  min-height: 450px;
   background-color: rgb(210,180,140);
   float: left;
   padding: 50px, 0, 50px, 0;
+  margin-top: 10px;
   position: fixed;
+  border: dashed 2px rgb(82,71,55);
+  color: rgb(88,78,58);
 }
 
 /*------------WYSZUKIWANIE------------*/
@@ -199,7 +202,7 @@ footer{
 .adm_title, .basket_title, .edit_title{
   width: 230px;
   height: 75px;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   position: absolute;
   top: 0;
   right: 0;
@@ -240,7 +243,7 @@ footer{
 }
 
 input[name="koszyk"]{
-  font-size: 10px;
+  font-size: 60%;
   position: absolute;
   bottom: 0;
   left: 12px;
@@ -456,4 +459,11 @@ input[name="usunZawartosc"]{
   position: absolute;
   bottom: 10px;
   right: 20px;
+}
+
+/*--------------*/
+
+
+.chosenOne{
+  font-weight: bold;
 }
